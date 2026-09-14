@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Aparna's Birthday Surprise | For My Most Special Akka 🤍</title>
+  
+  <!-- Favicon / Luxury Accent -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/cake.css">
+</head>
+<body>
+
+  <!-- Ambient Luminous Canvas & Dark Vignette -->
+  <canvas id="ambient-canvas"></canvas>
+  <div class="bg-vignette"></div>
+
+  <!-- Dynamic Balloons Container -->
+  <div id="balloon-container" class="balloon-container"></div>
+
+  <!-- Top Luxury Navigation Bar -->
+  <nav class="top-nav">
+    <div class="brand-badge">
+      Aparna <span>✨</span>
+    </div>
+    <div class="page-indicators">
+      <div class="step-dot active" title="Page 1"></div>
+      <div class="step-dot" title="Page 2"></div>
+      <div class="step-dot" title="Page 3"></div>
+      <div class="step-dot" title="Page 4"></div>
+      <div class="step-dot" title="Page 5"></div>
+      <div class="step-dot" title="Page 6"></div>
+    </div>
+  </nav>
+
+  <!-- Audio Elements -->
+  <audio id="cake-bgm-audio" src="assets/audio/cake-bgm.mp3" preload="auto" loop></audio>
+  <audio id="fireworks-audio" src="assets/audio/fireworks.mp3" preload="auto"></audio>
+  <audio id="bgm-audio" src="assets/audio/bgm.mp3" preload="auto" loop></audio>
+
+  <!-- Main Multi-Page Container -->
+  <main class="app-container">
+
+    <!-- ===================================================================
+         PAGE 1 — ENTER YOUR FAVOURITE COLOUR (DARK LUXURY)
+         =================================================================== -->
+    <section id="page-1" class="page-section active">
+      <span class="calligraphy-accent">A Digital Birthday Gift</span>
+      <h1 class="cinematic-title gold-accent">A Special Surprise For Aparna</h1>
+      <p class="cinematic-subtitle">Before we begin the journey, answer one small question...</p>
+
+      <div class="luxury-card" id="color-picker-box">
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 1.45rem; margin-bottom: 0.8rem; text-align: center; color: var(--text-primary);">
+          Enter your favourite colour
+        </h2>
+        <p style="font-size: 0.95rem; color: var(--text-muted); text-align: center; margin-bottom: 1.5rem;">
+          Type your favourite colour below or pick one of the delicate shades:
+        </p>
+
+        <div class="input-luxury-wrapper">
+          <input 
+            type="text" 
+            id="fav-color-input" 
+            class="input-luxury" 
+            placeholder="e.g. Lavender, Rose Pink, Sky Blue, Lilac..."
+            autocomplete="off"
+            aria-label="Enter your favourite colour"
+          >
+        </div>
+
+        <!-- Quick Tap Color Chips for Mobile -->
+        <div class="color-chips">
+          <button type="button" class="color-chip" data-color="Rose Pink">
+            <span class="chip-dot" style="background: #f06292; color: #f06292;"></span> Rose Pink
+          </button>
+          <button type="button" class="color-chip" data-color="Lavender">
+            <span class="chip-dot" style="background: #9575cd; color: #9575cd;"></span> Lavender
+          </button>
+          <button type="button" class="color-chip" data-color="Lilac">
+            <span class="chip-dot" style="background: #ba68c8; color: #ba68c8;"></span> Lilac
+          </button>
+          <button type="button" class="color-chip" data-color="Sky Blue">
+            <span class="chip-dot" style="background: #4fc3f7; color: #4fc3f7;"></span> Sky Blue
+          </button>
+          <button type="button" class="color-chip" data-color="Champagne Gold">
+            <span class="chip-dot" style="background: #e5c158; color: #e5c158;"></span> Champagne Gold
+          </button>
+          <button type="button" class="color-chip" data-color="Peach">
+            <span class="chip-dot" style="background: #ff8a65; color: #ff8a65;"></span> Peach
+          </button>
+          <button type="button" class="color-chip" data-color="Mint">
+            <span class="chip-dot" style="background: #26a69a; color: #26a69a;"></span> Mint
+          </button>
+          <button type="button" class="color-chip" data-color="Ruby Red">
+            <span class="chip-dot" style="background: #c2185b; color: #c2185b;"></span> Ruby Red
+          </button>
+        </div>
+
+        <div class="btn-wrapper" style="margin-top: 1rem;">
+          <button id="btn-color-continue" class="btn-luxury" type="button">
+            Continue ✨
+          </button>
+        </div>
+      </div>
+
+      <!-- Cinematic Birthday Reveal (Appears After Colour Selection) -->
+      <div id="birthday-reveal-wrap" class="birthday-reveal-wrap">
+        <h2 class="thagameeyy-msg">
+          Happiest birthday thagameeyy<span class="heart-glow">🤍😘</span>
+        </h2>
+        <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.3rem; color: var(--text-secondary); margin-bottom: 2.2rem; text-shadow: 0 2px 8px rgba(0,0,0,0.8);">
+          Every balloon floating above carries the love and warm wishes of your thambi...
+        </p>
+        <div class="btn-wrapper">
+          <button id="btn-to-cake" class="btn-luxury" type="button">
+            Cake Cutting 🎂
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         PAGE 2 — 3D CAKE CUTTING (THREE-CLICK INTERACTION SEQUENCE)
+         =================================================================== -->
+    <section id="page-2" class="page-section">
+      <span class="calligraphy-accent">Make A Sweet Wish</span>
+      <h1 class="cinematic-title gold-accent">The Birthday Celebration</h1>
+      <p class="cinematic-subtitle">Blow the candle and celebrate your special birthday cake...</p>
+
+      <!-- 3D Cake Scene with Cinematic Spotlight & Aerial Diwali Fireworks -->
+      <div class="cake-scene">
+        
+        <!-- Ambient Spotlight Glow -->
+        <div class="cake-spotlight"></div>
+
+        <!-- Diwali-style Aerial Fireworks Canvas -->
+        <canvas id="fireworks-canvas"></canvas>
+
+        <!-- Background Glowing Message: "Happy birthday akkoww" -->
+        <div id="akkoww-reveal" class="akkoww-bg-reveal">
+          Happy birthday <span class="akkoww-highlight">akkoww</span> 🤍✨
+        </div>
+
+        <div class="cake-stage">
+          <!-- Cake Stand / Pedestal -->
+          <div class="cake-stand"></div>
+          <div class="cake-stand-base"></div>
+
+          <!-- Small Elegant Dessert Plate for the Cut Piece -->
+          <div class="dessert-plate">
+            <span class="plate-label">Aparna's Slice ✨</span>
+          </div>
+
+          <!-- Cake Knife -->
+          <div id="cake-knife" class="knife">
+            <div class="knife-blade"></div>
+            <div class="knife-handle"></div>
+          </div>
+
+          <!-- Main Cake Body -->
+          <div id="cake-body" class="cake-body">
+            <!-- Bottom Tier -->
+            <div class="tier-bottom">
+              <div class="piping-bottom"></div>
+            </div>
+
+            <!-- Top Tier -->
+            <div class="tier-top">
+              <div class="gold-drip"></div>
+
+              <!-- Candle -->
+              <div class="candle-wrapper">
+                <div class="candle-stick">
+                  <div class="candle-wick"></div>
+                  <!-- Flame Initially ON -->
+                  <div id="candle-flame" class="flame"></div>
+                  <!-- Smoke puff when extinguished -->
+                  <div id="smoke-puff" class="smoke-puff"></div>
+                </div>
+              </div>
+
+              <!-- Cake Inscription -->
+              <div class="cake-text-plate">
+                <span class="cake-inscription">Happy Birthday<br>Aparna</span>
+              </div>
+
+              <!-- Cut Gap Notch (revealed when slice moves) -->
+              <div class="cut-gap"></div>
+
+              <!-- Cuttable Single Cake Slice (Detaches in step 2, moves to plate in step 3) -->
+              <div id="cake-slice" class="cake-slice">
+                <div class="slice-interior"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons: Exact Three-Click Sequence -->
+      <div class="btn-wrapper" style="margin-top: 1.5rem;">
+        <!-- Click 1: Candle OFF + Diwali fireworks + cake-bgm starts -->
+        <button id="btn-cake-step-1" class="btn-luxury" type="button">
+          Cut the Cake 🎂
+        </button>
+
+        <!-- Click 2: Knife cuts ONE piece (appears after Click 1) -->
+        <button id="btn-cake-step-2" class="btn-luxury" type="button" style="display: none;">
+          Cut the Cake 🔪
+        </button>
+
+        <!-- Click 3: Place ONE piece on plate (appears after Click 2) -->
+        <button id="btn-cake-step-3" class="btn-luxury" type="button" style="display: none;">
+          Place the Cake 🍰
+        </button>
+      </div>
+
+      <!-- Next Button (Appears ONLY AFTER Click 3 completely finishes) -->
+      <div class="btn-wrapper" style="margin-top: 1.2rem;">
+        <button id="btn-cake-next" class="btn-luxury btn-luxury-outline" type="button" style="display: none;">
+          Next ✨
+        </button>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         PAGE 3 — PERSONAL BIRTHDAY MESSAGE + PHOTOS (ONE UNIFIED CONTAINER)
+         =================================================================== -->
+    <section id="page-3" class="page-section">
+      <span class="calligraphy-accent">From Your Thambi's Heart</span>
+      <h1 class="cinematic-title gold-accent">For My Precious Akka 🤍</h1>
+      <p class="cinematic-subtitle">A letter written with all my love, care, and gratitude...</p>
+
+      <!-- Top Photo Gallery -->
+      <div class="page3-photos">
+        <div class="photo-frame">
+          <img src="assets/images/aparna-1.jpg" alt="Aparna Photo 1" loading="lazy">
+          <div class="photo-tag">Akka & Thambi 🤍</div>
+        </div>
+        <div class="photo-frame">
+          <img src="assets/images/aparna-2.jpg" alt="Aparna Photo 2" loading="lazy">
+          <div class="photo-tag">Unconditional Care ✨</div>
+        </div>
+      </div>
+
+      <!-- ONE SINGLE ELEGANT UNIFIED LETTER CONTAINER -->
+      <div class="luxury-card letter-box-unified">
+        <div class="quote-ornament">“</div>
+        
+        <p class="letter-paragraph">
+          Happiest Birthday akka🫶🏻🤍🎀.... apavumaii sirichitaii happy ahh iruga akka🫶🏻....na unga kuda oru thambi ahh life full ahh ungaluku support panitu irupen akka apavumaii 💯..<span class="highlight-emotional">yaru ena sonalim unga thambi ungala vitu apavumaii poga matan💯🎀</span>....neega enaku life laa neriya panirukiga akka..na apo kalai akka taa pesa start panee no apo irunthu neegalum enkuda pesuniga starting laa na ungata remba pesa maten ana neega en mela remba pasam ah irupiga🫶🏻🤗...
+        </p>
+
+        <p class="letter-paragraph">
+          Athu aprm nama oru nala akka thambi ahh irunthom ....neega na kalai alarum nala jolly ahh pesitu irupom neega enaku support panii pesuviga apadii nama happy ahh irunthom akka✨......na apo fell panalum enakandii neega kalai taa poii pesuviga enaku call panii pesii enaku arthal ahh irupigaa🫶🏻🥺....<span class="highlight-emotional">athan na athu nalum first ungata solluven 💯</span>....neega matum tha na ena sonalum atha purinjipiga avalothan na ungata kovam patalum neega enkitaa pasam ahh nadathukiriga apavumaii 🥹💯...
+        </p>
+
+        <p class="letter-paragraph">
+          na ungala apavathu purinjika maten ana neega na Evalo ungala hurt panalum enkita apavum pola happy ahh ena care panitu irukiga🥹💯🤍..... <span class="highlight-purple">apavumaii naa ungala vitu kuduka maten yarutaiyum enaku lifee la kedacha varam neegalum en thagamaa vum💯🫶🏻🥹🫂🌎</span> ....enaku atha unga rendu pera vita vera yarum ilaa akka 🥺..life laa neega rendru perum matum enkuda eruntha pothum ena care panituu💯🌎🫶🏻....
+        </p>
+
+        <p class="letter-paragraph">
+          na oru nala thambi ahh erunthu ungala pathupen akka apavumaii na ungala fell pana vita maten🫶🏻... ungaluku oru kastam na enkita vanthu soluga thambi apavumaii ungala care panuven💯...ana neega apadii athum enkita inum Sola la😒... ungaluku athum kastam na enkita solanum nu thonuchii naa sollu akka apanalum🫂...
+        </p>
+
+        <p class="letter-paragraph">
+          enaku apo kasta patalum una thedii tha varuven first ungakita atha sona aprm enaku antha kastam konja fell kamiyaa irukum relax ahh fell panuven akka..na thagamaa aparam remba pasam vacha oraii person neega matum tha akka..apavumaii neega ena vitu poirathiga akka please🤍💎🧿..thagama vita marii neeyum vitratha akka ana thagamaa varuva neega enaku hope kuduthrukiga enoda love true ava varuvaa💝.....<span class="highlight-emotional">once again happiest birthday thagameey 🤍🌎😚.... Always stay happy forever thagameeyy ✨🫶🏻</span>
+        </p>
+
+        <div class="letter-seal">
+          With eternal love, your Thambi 🫀✨
+        </div>
+      </div>
+
+      <div class="btn-wrapper">
+        <button id="btn-to-page-4" class="btn-luxury" type="button">
+          Next ✨
+        </button>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         PAGE 4 — PHOTO MEMORY ALBUM (DARK LUXURY CARDS)
+         =================================================================== -->
+    <section id="page-4" class="page-section">
+      <span class="calligraphy-accent">Collection of Moments</span>
+      <h1 class="cinematic-title gold-accent">Memory Album 📸</h1>
+      <p class="cinematic-subtitle">Every snapshot is a memory etched in our journey...</p>
+
+      <!-- Polaroid Memory Showcase -->
+      <div class="album-showcase">
+        <div class="polaroid-deck" id="polaroid-deck">
+          
+          <!-- Card 1 -->
+          <div class="polaroid-card card-1" style="z-index: 3;">
+            <div class="polaroid-tape"></div>
+            <div class="polaroid-image-wrapper">
+              <img src="assets/images/aparna-3.jpg" alt="Aparna Memory 3" loading="lazy">
+            </div>
+            <div class="polaroid-caption">Smiles that brighten every day ✨</div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="polaroid-card card-2" style="z-index: 2;">
+            <div class="polaroid-tape"></div>
+            <div class="polaroid-image-wrapper">
+              <img src="assets/images/aparna-4.jpg" alt="Aparna Memory 4" loading="lazy">
+            </div>
+            <div class="polaroid-caption">Endless laughter & pure moments 🤍</div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="polaroid-card card-3" style="z-index: 1;">
+            <div class="polaroid-tape"></div>
+            <div class="polaroid-image-wrapper">
+              <img src="assets/images/aparna-5.jpg" alt="Aparna Memory 5" loading="lazy">
+            </div>
+            <div class="polaroid-caption">The sweetest memories we cherish 🌸</div>
+          </div>
+
+        </div>
+
+        <div class="album-hint">
+          <span>✨</span> Tap on the photo to flip to the next memory <span>✨</span>
+        </div>
+      </div>
+
+      <!-- Button Text Must Be Exactly: "Aval💜" -->
+      <div class="btn-wrapper">
+        <button id="btn-aval" class="btn-luxury" type="button">
+          Aval💜
+        </button>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         PAGE 5 — COUSIN SISTER / SPECIAL BOND (ONE UNIFIED CONTAINER)
+         =================================================================== -->
+    <section id="page-5" class="page-section">
+      <span class="calligraphy-accent">A Bond Like No Other</span>
+      <h1 class="cinematic-title gold-accent">Cousin Sister & Best Friend</h1>
+      <p class="cinematic-subtitle">Some relationships are given by family, but ours became truly special...</p>
+
+      <!-- Artistic 4-Photo Collage Layout -->
+      <div class="cousin-collage">
+        <div class="collage-ambient-glow"></div>
+        <div class="collage-grid">
+          <!-- Hero Photo -->
+          <div class="photo-frame collage-item-hero">
+            <img src="assets/images/aparna-1.jpg" alt="Aparna Hero Photo" loading="lazy">
+            <div class="photo-tag">My Sister 💜</div>
+          </div>
+          <!-- Companion 1 -->
+          <div class="photo-frame collage-item-top">
+            <img src="assets/images/aparna-2.jpg" alt="Aparna Photo 2" loading="lazy">
+            <div class="photo-tag">Best Friend 🫀</div>
+          </div>
+          <!-- Companion 2 -->
+          <div class="photo-frame collage-item-bottom">
+            <img src="assets/images/aparna-6.jpg" alt="Aparna Photo 6" loading="lazy">
+            <div class="photo-tag">Always There 🫂</div>
+          </div>
+          <!-- Wide Banner Photo -->
+          <div class="photo-frame collage-item-wide">
+            <img src="assets/images/aparna-7.jpg" alt="Aparna Photo 7" loading="lazy">
+            <div class="photo-tag">Pure Happiness ✨</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ONE SINGLE ELEGANT UNIFIED STORY CONTAINER -->
+      <div class="luxury-card story-box-unified">
+        
+        <p class="letter-paragraph">
+          She is my cousin, but our bond is much more than that. 💜 <span class="highlight-purple">She is like my own sister, my best friend, and one of the most important people in my life. 🫀</span> Whenever I think about the people who truly matter to me, she will always be one of the first people that comes to my mind. ✨
+        </p>
+
+        <p class="letter-paragraph">
+          We have grown together, shared so many beautiful memories, laughed over the smallest things 😚🫀 and supported each other through difficult times. Whatever happens in life, we always share our happiness, problems, and everything that is on our mind. 🫂 <span class="highlight-emotional">No matter what the situation is, we always have each other's back. 💯✨</span>
+        </p>
+
+        <p class="letter-paragraph">
+          There are some people with whom you don’t have to pretend to be happy....💜 <span class="highlight-purple">You can simply be yourself, and she is that person for me.</span> I can talk to her about anything without feeling judged or misunderstood. With her, even silence feels comfortable, and every conversation becomes a memory. ✨🫂
+        </p>
+
+        <p class="letter-paragraph">
+          Whenever I am with her, I feel genuinely happy and peaceful. 💫 Even a normal day becomes special just because we spend time together. Her presence has a way of making my mood better without even trying. 😚 <span class="highlight-emotional">Sometimes, I don’t even need a reason to smile just being around her is enough...💜✨</span>
+        </p>
+
+        <p class="letter-paragraph">
+          We may fight, tease each other, and annoy each other sometimes 😂, but at the end of the day, our bond never changes. ...😚💯 No matter how much time passes or how life changes, I know she will always have a special place in my life. 🫀💜
+        </p>
+
+        <p class="letter-paragraph">
+          She is not just a part of my family; she is a beautiful part of my life. 🌍 <span class="highlight-purple">She is one of the reasons behind so many of my happiest memories</span>, and I will always be grateful for every moment we have shared together. ✨💫
+        </p>
+
+        <p class="letter-paragraph">
+          I’m really lucky to have a cousin sister who feels like a true sister, a best friend, and a person I can always count on. 💜 Some relationships are given by family, but some become truly special because of the bond we create. 🫂 <span class="highlight-emotional">Ours is one of those rare and beautiful bonds that I will always cherish. 💯💜✨</span>
+        </p>
+
+      </div>
+
+      <div class="btn-wrapper">
+        <button id="btn-to-page-6" class="btn-luxury" type="button">
+          Next ✨
+        </button>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         PAGE 6 — FINAL LETTER + PHOTOS (CLEAN CINEMATIC — INVISIBLE BGM)
+         =================================================================== -->
+    <section id="page-6" class="page-section">
+      <span class="calligraphy-accent">With All My Heart</span>
+      <h1 class="cinematic-title gold-accent">Once Again, Happy Birthday Akka 🤍</h1>
+      <p class="cinematic-subtitle">A final letter from your thambi, written with all my heart...</p>
+
+      <!-- 2 to 3 Photos in Artistic Layout (NO VISIBLE MUSIC PLAYER UI) -->
+      <div class="page6-photos">
+        <div class="photo-frame">
+          <img src="assets/images/aparna-6.jpg" alt="Aparna Photo 6" loading="lazy">
+          <div class="photo-tag">Forever Akka 🤍</div>
+        </div>
+        <div class="photo-frame">
+          <img src="assets/images/aparna-7.jpg" alt="Aparna Photo 7" loading="lazy">
+          <div class="photo-tag">My Strength ✨</div>
+        </div>
+        <div class="photo-frame">
+          <img src="assets/images/aparna-8.jpg" alt="Aparna Photo 8" loading="lazy">
+          <div class="photo-tag">Always Beside You 🫀</div>
+        </div>
+      </div>
+
+      <!-- ONE SINGLE ELEGANT UNIFIED FINALE CONTAINER -->
+      <div class="luxury-card finale-box-unified">
+        
+        <p class="letter-paragraph">
+          <strong style="color: var(--gold-light); font-size: 1.25rem; display: block; margin-bottom: 0.8rem;">Once again Happy Birthday to my most special Akka! 💜🎂✨</strong>
+          You are not just my cousin sister, you are like my own sister, my best friend, and one of the most important people in my life. 🤍 We have shared so many memories together, laughed over small things 😚, shared our problems, and supported each other through every situation. 🫂💯
+        </p>
+
+        <p class="letter-paragraph">
+          No matter what problem comes into my life, you will always be one of the first people I come to. 🤍 Whenever I feel low or have something on my mind, I know I can talk to you without any hesitation. <span class="highlight-purple">You always understand me, care for me, and make me feel better. ✨🫂</span>
+        </p>
+
+        <p class="letter-paragraph">
+          You have helped me so much and supported me whenever I needed you. 💯 I may not say it every time, but I truly appreciate everything you do for me. <span class="highlight-emotional">You always take care of me like your own brother, and that means a lot to me. 🤍🫀</span>
+        </p>
+
+        <p class="letter-paragraph">
+          Whenever I am with you, I feel genuinely happy. 💫 Even an ordinary day becomes special when we spend time together. <span class="highlight-purple">Your presence itself brings a different kind of happiness into my life. 😚🤍✨</span>
+        </p>
+
+        <p class="letter-paragraph">
+          We may fight, tease each other, and annoy each other sometimes 😂, but nothing can change the bond we have. 💜 <span class="highlight-emotional">No matter how much life changes or how busy we become, you will always have a special place in my heart. 🤍🌍</span>
+        </p>
+
+        <p class="letter-paragraph">
+          And just like you always take care of me, I promise I will always take care of you too. 🫂💜 <span class="highlight-purple">Whatever difficulty comes into your life, whenever you need me, your thambi will always be there for you. 💯</span> I will always try my best to support you, help you, and see you happy. 🤍✨
+        </p>
+
+        <p class="letter-paragraph">
+          I’m really lucky to have an Akka like you.... Thank you for always being there for me, helping me, caring for me, and making so many beautiful memories with me. 🫂🤍 I hope our bond always stays the same, no matter where life takes us. 🌍💫
+        </p>
+
+        <p class="letter-paragraph">
+          Happy Birthday once again, Akka! 🎂🤍 Keep smiling, stay happy, and always be the amazing person you are. ✨😚
+        </p>
+
+        <p class="letter-paragraph" style="font-family: 'Cinzel', serif; letter-spacing: 0.08em; font-size: 0.95rem; color: var(--gold-light); margin-top: 1.6rem; margin-bottom: 0.8rem; text-transform: uppercase;">
+          And one last thing from your thambi… 🫀🤍
+        </p>
+        
+        <p class="letter-paragraph">
+          This is the little gift I could make for you. I don’t know whether you will like it or not, but I made it with all my heart. 🤍✨ Maybe it is not the perfect gift, but I promise I will prepare an even better gift for you next time. 😚💫
+        </p>
+        
+        <p class="letter-paragraph" style="margin-top: 1.2rem; color: var(--gold-light); font-weight: 500;">
+          No matter how big the gift is, having you as my Akka is already one of the best gifts in my life. 🫂🤍
+        </p>
+
+      </div>
+
+      <!-- FINAL SECTION — FINAL TOUCH -->
+      <div class="final-section-card scroll-reveal">
+        <h3 class="made-with-love-text">
+          Made with love, for Aparna 🤍
+        </h3>
+        <p class="made-with-love-sub">
+          There is one last sweet surprise waiting just for you...
+        </p>
+        <div class="btn-wrapper" style="margin-top: 0;">
+          <button id="btn-final-touch" class="btn-luxury btn-final-touch" type="button">
+            Final Touch ✨
+          </button>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Scripts -->
+  <script src="js/audio-synth.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,1249 @@
+/* ===================================================
+   APARNA BIRTHDAY SURPRISE — LUXURY CINEMATIC DARK MODE
+   =================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Premium Dark Mode Palette */
+  --bg-main: #09090d;
+  --bg-gradient: radial-gradient(circle at 50% 15%, #181524 0%, #0d0c13 50%, #070709 100%);
+  --bg-card: rgba(20, 18, 28, 0.78);
+  --bg-card-elevated: rgba(28, 25, 38, 0.88);
+  --bg-glass: rgba(18, 16, 26, 0.72);
+  --border-glass: rgba(255, 255, 255, 0.09);
+  --border-gold: rgba(229, 193, 88, 0.32);
+  --border-purple: rgba(168, 85, 247, 0.28);
+  
+  /* Metallic Champagne Gold */
+  --gold-primary: #e5c158;
+  --gold-light: #fae5a7;
+  --gold-deep: #b8860b;
+  --gold-gradient: linear-gradient(135deg, #e5c158 0%, #fae5a7 50%, #b8860b 100%);
+  --gold-text-gradient: linear-gradient(135deg, #fae5a7 0%, #e5c158 50%, #d4af37 100%);
+
+  /* Subtle Royal Purple */
+  --purple-accent: #a855f7;
+  --purple-soft: #c084fc;
+  --purple-glow: rgba(168, 85, 247, 0.3);
+  --purple-gradient: linear-gradient(135deg, #a855f7 0%, #c084fc 60%, #e5c158 100%);
+
+  /* Typography Colors (High Contrast on Dark) */
+  --text-primary: #fcfcfd;
+  --text-secondary: #e2dee9;
+  --text-muted: #a19da8;
+  --text-accent: #fae5a7;
+  --text-highlight: #fef0c7;
+
+  /* Aparna's Dynamic Favourite Colour (Updated via JS on Page 1) */
+  --fav-color: #f06292; /* default gentle rose */
+  --fav-color-light: #fce4ec;
+  --fav-color-glow: rgba(240, 98, 146, 0.4);
+  --fav-color-rgb: 240, 98, 146;
+
+  /* Shadows & Ambient Glows */
+  --shadow-dark-sm: 0 4px 16px rgba(0, 0, 0, 0.5);
+  --shadow-dark-md: 0 14px 38px rgba(0, 0, 0, 0.65);
+  --shadow-dark-lg: 0 24px 60px rgba(0, 0, 0, 0.85);
+  --shadow-glow-gold: 0 0 30px rgba(229, 193, 88, 0.25);
+  --shadow-glow-purple: 0 0 30px rgba(168, 85, 247, 0.25);
+
+  /* Radius */
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 28px;
+  --radius-full: 9999px;
+}
+
+/* Reset & Base Setup */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--text-primary);
+  background: var(--bg-main);
+  background-image: var(--bg-gradient);
+  background-attachment: fixed;
+  overflow-x: hidden;
+  position: relative;
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ambient Canvas Background (Luminous Stardust & Micro-Orbs) */
+#ambient-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.85;
+}
+
+/* Luxury Cinematic Dark Vignette & Mesh */
+.bg-vignette {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  background: 
+    radial-gradient(circle at 15% 15%, rgba(168, 85, 247, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 85% 85%, var(--fav-color-glow) 0%, transparent 50%),
+    radial-gradient(circle at 50% 30%, rgba(229, 193, 88, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at 50% 50%, transparent 55%, rgba(0, 0, 0, 0.85) 100%);
+  transition: background 1.5s ease;
+}
+
+/* Top Progress / Luxury Navigation Bar */
+.top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 1rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  background: rgba(12, 11, 16, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+}
+
+.brand-badge {
+  font-family: 'Cinzel', serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-primary);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-shadow: 0 0 15px rgba(229, 193, 88, 0.4);
+}
+
+.brand-badge span {
+  color: var(--purple-soft);
+  transition: color 0.8s ease;
+}
+
+/* Page Steps Dots */
+.page-indicators {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.step-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: all 0.4s ease;
+}
+
+.step-dot.active {
+  width: 24px;
+  border-radius: 6px;
+  background: var(--gold-gradient);
+  box-shadow: 0 0 12px rgba(229, 193, 88, 0.65);
+}
+
+/* Main Content Wrapper */
+.app-container {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: 5.4rem 1.25rem 4rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Page Section Architecture */
+.page-section {
+  display: none;
+  opacity: 0;
+  transform: translateY(20px) scale(0.99);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.page-section.active {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Typography Hierarchy */
+.cinematic-title {
+  font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.85rem, 6.4vw, 2.8rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.25;
+  text-align: center;
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.015em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.cinematic-title.gold-accent {
+  background: var(--gold-text-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 14px rgba(229, 193, 88, 0.35));
+}
+
+.cinematic-subtitle {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.1rem, 3.8vw, 1.4rem);
+  color: var(--text-muted);
+  text-align: center;
+  margin-bottom: 2.2rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.calligraphy-accent {
+  font-family: 'Alex Brush', cursive;
+  font-size: clamp(2rem, 5.5vw, 2.6rem);
+  color: var(--purple-soft);
+  display: block;
+  margin-bottom: 0.3rem;
+  text-shadow: 0 0 16px rgba(168, 85, 247, 0.45);
+}
+
+/* Luxury Dark Glass Cards */
+.luxury-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-dark-md), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  padding: 2.2rem 1.8rem;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.luxury-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--gold-primary) 50%, transparent 100%);
+  opacity: 0.8;
+}
+
+/* ===================================================
+   PAGE 1: COLOUR SELECTION & REVEAL (DARK UPGRADE)
+   =================================================== */
+
+.color-picker-box {
+  width: 100%;
+  max-width: 460px;
+  margin: 1.5rem auto;
+  text-align: center;
+}
+
+.input-luxury-wrapper {
+  position: relative;
+  margin-bottom: 1.2rem;
+}
+
+.input-luxury {
+  width: 100%;
+  padding: 1.15rem 1.4rem;
+  font-size: 1.12rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--text-primary);
+  background: rgba(15, 13, 21, 0.85);
+  border: 1.5px solid rgba(229, 193, 88, 0.35);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45), inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  outline: none;
+  transition: all 0.35s ease;
+  text-align: center;
+}
+
+.input-luxury:focus {
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 0 4px rgba(229, 193, 88, 0.2), 0 0 25px rgba(229, 193, 88, 0.3);
+  background: rgba(22, 19, 31, 0.95);
+}
+
+.input-luxury::placeholder {
+  color: #787385;
+  font-size: 0.98rem;
+}
+
+/* Quick color chips */
+.color-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  justify-content: center;
+  margin-bottom: 1.8rem;
+}
+
+.color-chip {
+  background: rgba(24, 21, 33, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 0.95rem;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.color-chip .chip-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 8px currentColor;
+}
+
+.color-chip:hover, .color-chip.selected {
+  transform: translateY(-2px);
+  border-color: var(--gold-primary);
+  box-shadow: 0 4px 16px rgba(229, 193, 88, 0.28), 0 0 12px rgba(168, 85, 247, 0.2);
+  color: #ffffff;
+  background: rgba(35, 30, 48, 0.9);
+}
+
+/* Dynamic Balloons */
+.balloon-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 50;
+  overflow: hidden;
+}
+
+.balloon {
+  position: absolute;
+  bottom: -150px;
+  width: 68px;
+  height: 84px;
+  border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+  background: radial-gradient(circle at 35% 30%, #ffffff 0%, var(--fav-color) 52%, rgba(0, 0, 0, 0.45) 100%);
+  box-shadow: 
+    inset -4px -6px 12px rgba(0, 0, 0, 0.35),
+    inset 4px 6px 10px rgba(255, 255, 255, 0.6),
+    0 16px 30px rgba(0, 0, 0, 0.65),
+    0 0 25px var(--fav-color-glow);
+  animation: floatUpSlow 8.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  opacity: 0.95;
+}
+
+.balloon::after {
+  content: '';
+  position: absolute;
+  bottom: -9px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 9px;
+  background: var(--fav-color);
+  clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+  filter: brightness(0.85);
+}
+
+.balloon-string {
+  position: absolute;
+  top: 88px;
+  left: 50%;
+  width: 1.5px;
+  height: 95px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(229, 193, 88, 0.45) 100%);
+  transform-origin: top center;
+  animation: stringWave 2s infinite ease-in-out alternate;
+}
+
+@keyframes floatUpSlow {
+  0% {
+    bottom: -150px;
+    opacity: 0;
+    transform: translateX(0) rotate(0deg);
+  }
+  15% {
+    opacity: 0.95;
+  }
+  50% {
+    transform: translateX(25px) rotate(6deg);
+  }
+  75% {
+    transform: translateX(-20px) rotate(-5deg);
+  }
+  100% {
+    bottom: 110%;
+    opacity: 0.85;
+    transform: translateX(15px) rotate(4deg);
+  }
+}
+
+@keyframes stringWave {
+  0% { transform: rotate(-5deg); }
+  100% { transform: rotate(5deg); }
+}
+
+/* Cinematic Birthday Message Reveal on Page 1 */
+.birthday-reveal-wrap {
+  display: none;
+  opacity: 0;
+  transform: translateY(24px);
+  text-align: center;
+  margin-top: 2rem;
+  transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.birthday-reveal-wrap.revealed {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.thagameeyy-msg {
+  font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2rem, 7.2vw, 3.2rem);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.35;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.02em;
+  text-shadow: 
+    0 0 25px rgba(229, 193, 88, 0.6),
+    0 0 50px rgba(168, 85, 247, 0.35),
+    0 4px 12px rgba(0, 0, 0, 0.9);
+  animation: darkGlowPulse 3s infinite alternate ease-in-out;
+}
+
+.thagameeyy-msg .heart-glow {
+  display: inline-block;
+  animation: heartBeat 1.8s infinite ease-in-out;
+}
+
+@keyframes darkGlowPulse {
+  0% {
+    filter: drop-shadow(0 0 8px rgba(229, 193, 88, 0.35));
+  }
+  100% {
+    filter: drop-shadow(0 0 24px rgba(229, 193, 88, 0.75)) drop-shadow(0 0 35px rgba(168, 85, 247, 0.4));
+  }
+}
+
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.18); }
+  35% { transform: scale(1.05); }
+  45% { transform: scale(1.15); }
+}
+
+/* ===================================================
+   BUTTONS: LUXURY & TOUCH ERGONOMIC (DARK UPGRADE)
+   =================================================== */
+
+.btn-luxury {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 1.05rem 2.4rem;
+  min-height: 52px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: #151108;
+  background: var(--gold-gradient);
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  box-shadow: 
+    0 10px 28px rgba(229, 193, 88, 0.35),
+    0 0 20px rgba(229, 193, 88, 0.25),
+    inset 0 1px 1px rgba(255, 255, 255, 0.8);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  user-select: none;
+}
+
+.btn-luxury:hover {
+  transform: translateY(-2.5px);
+  box-shadow: 
+    0 16px 36px rgba(229, 193, 88, 0.45),
+    0 0 30px rgba(250, 229, 167, 0.6),
+    0 0 25px rgba(168, 85, 247, 0.3);
+  color: #0b0905;
+}
+
+.btn-luxury:active {
+  transform: translateY(1px);
+  box-shadow: 0 4px 14px rgba(229, 193, 88, 0.25);
+}
+
+.btn-luxury-outline {
+  background: rgba(20, 17, 28, 0.8);
+  color: var(--text-primary);
+  border: 1.5px solid var(--gold-primary);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), 0 0 14px rgba(229, 193, 88, 0.2);
+}
+
+.btn-luxury-outline:hover {
+  background: rgba(30, 26, 42, 0.95);
+  border-color: var(--gold-light);
+  color: #ffffff;
+}
+
+.btn-wrapper {
+  margin-top: 2rem;
+  text-align: center;
+  width: 100%;
+}
+
+/* ===================================================
+   PAGE 3: MAJOR TYPOGRAPHY & LETTER REDESIGN
+   =================================================== */
+
+/* Top Photo Gallery in Page 3 */
+.page3-photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  margin-bottom: 2.2rem;
+  width: 100%;
+}
+
+.photo-frame {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: #14121c;
+  padding: 8px;
+  box-shadow: var(--shadow-dark-md), 0 0 0 1px rgba(229, 193, 88, 0.3);
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s ease;
+}
+
+.photo-frame:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: var(--shadow-dark-lg), 0 0 30px rgba(229, 193, 88, 0.35), 0 0 20px rgba(168, 85, 247, 0.25);
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: calc(var(--radius-md) - 6px);
+  display: block;
+  filter: brightness(0.95) contrast(1.05);
+}
+
+.photo-tag {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  background: rgba(12, 10, 18, 0.85);
+  backdrop-filter: blur(8px);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--gold-primary);
+  letter-spacing: 0.05em;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  border: 0.5px solid rgba(229, 193, 88, 0.35);
+}
+
+.page3-photos .photo-frame {
+  height: 230px;
+}
+
+/* ===================================================
+   UNIFIED SINGLE MESSAGE BOXES (PAGE 3, PAGE 5, PAGE 6)
+   =================================================== */
+
+.letter-box-unified,
+.story-box-unified,
+.finale-box-unified {
+  background: var(--bg-card);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border: 1.5px solid rgba(229, 193, 88, 0.28);
+  border-radius: var(--radius-lg);
+  padding: 2.6rem 2.1rem;
+  box-shadow: var(--shadow-dark-lg), 0 0 28px rgba(229, 193, 88, 0.12);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.letter-box-unified::before,
+.story-box-unified::before,
+.finale-box-unified::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2.5px;
+  background: linear-gradient(90deg, transparent 0%, var(--gold-primary) 50%, transparent 100%);
+  opacity: 0.9;
+}
+
+.story-box-unified {
+  border-left: 3.5px solid var(--purple-accent);
+  box-shadow: var(--shadow-dark-lg), 0 0 30px rgba(168, 85, 247, 0.15);
+}
+
+.finale-box-unified {
+  border: 1.5px solid rgba(229, 193, 88, 0.35);
+  box-shadow: var(--shadow-dark-lg), 0 0 35px rgba(229, 193, 88, 0.18), 0 0 22px rgba(168, 85, 247, 0.12);
+}
+
+.letter-box-unified .letter-paragraph,
+.story-box-unified .letter-paragraph,
+.finale-box-unified .letter-paragraph {
+  margin-bottom: 1.65rem;
+  line-height: 1.95;
+}
+
+.letter-box-unified .letter-paragraph:last-of-type,
+.story-box-unified .letter-paragraph:last-of-type,
+.finale-box-unified .letter-paragraph:last-of-type {
+  margin-bottom: 0;
+}
+
+/* Large Opening Quote for Card 1 */
+.quote-ornament {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 4rem;
+  line-height: 1;
+  color: rgba(229, 193, 88, 0.35);
+  position: absolute;
+  top: 10px;
+  right: 22px;
+  pointer-events: none;
+}
+
+.letter-paragraph {
+  font-size: clamp(1.02rem, 3.5vw, 1.15rem);
+  line-height: 1.9;
+  color: var(--text-primary);
+  font-weight: 400;
+  text-align: left;
+}
+
+/* Subtly Highlighted Emotional Sentences */
+.highlight-emotional {
+  color: var(--text-highlight);
+  font-weight: 500;
+  text-shadow: 0 0 12px rgba(250, 229, 167, 0.25);
+  display: inline;
+}
+
+.highlight-purple {
+  color: var(--purple-soft);
+  font-weight: 500;
+  text-shadow: 0 0 12px rgba(168, 85, 247, 0.25);
+  display: inline;
+}
+
+/* Little stamp on letter */
+.letter-seal {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.4rem;
+  font-family: 'Alex Brush', cursive;
+  font-size: 1.6rem;
+  color: var(--gold-primary);
+  margin-top: 1.2rem;
+  opacity: 0.85;
+}
+
+/* ===================================================
+   PAGE 4: POLAROID MEMORY ALBUM (DARK LUXURY)
+   =================================================== */
+
+.album-showcase {
+  width: 100%;
+  margin: 1.5rem 0 2.2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.polaroid-deck {
+  position: relative;
+  width: 100%;
+  max-width: 390px;
+  height: 450px;
+  margin: 0 auto;
+}
+
+.polaroid-card {
+  position: absolute;
+  top: 0;
+  left: 5%;
+  width: 90%;
+  height: 420px;
+  background: #15131e;
+  border-radius: 14px;
+  padding: 14px 14px 48px 14px;
+  box-shadow: 
+    0 22px 48px rgba(0, 0, 0, 0.8),
+    0 0 0 1px rgba(229, 193, 88, 0.35);
+  transform-origin: center bottom;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.6s ease, z-index 0s;
+  cursor: pointer;
+  user-select: none;
+}
+
+.polaroid-card:hover {
+  box-shadow: 
+    0 28px 60px rgba(0, 0, 0, 0.9),
+    0 0 30px rgba(229, 193, 88, 0.35),
+    0 0 20px rgba(168, 85, 247, 0.25);
+}
+
+.polaroid-card.card-1 {
+  transform: rotate(-3.5deg) translateY(0);
+  z-index: 3;
+}
+
+.polaroid-card.card-2 {
+  transform: rotate(2.5deg) translateY(8px);
+  z-index: 2;
+}
+
+.polaroid-card.card-3 {
+  transform: rotate(-1.5deg) translateY(16px);
+  z-index: 1;
+}
+
+.polaroid-card.swiped {
+  transform: translateY(-80px) rotate(12deg) scale(0.9) !important;
+  opacity: 0;
+}
+
+.polaroid-image-wrapper {
+  width: 100%;
+  height: 315px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #0a0910;
+  position: relative;
+  box-shadow: inset 0 0 15px rgba(0,0,0,0.6);
+}
+
+.polaroid-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.polaroid-tape {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 24px;
+  background: rgba(38, 30, 52, 0.9);
+  border: 1px dashed rgba(229, 193, 88, 0.5);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  z-index: 10;
+}
+
+.polaroid-caption {
+  margin-top: 15px;
+  text-align: center;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--gold-light);
+  letter-spacing: 0.03em;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.album-hint {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+/* ===================================================
+   PAGE 5: COUSIN SISTER ARTISTIC COLLAGE & STORY
+   =================================================== */
+
+.cousin-collage {
+  width: 100%;
+  margin-bottom: 2.4rem;
+  position: relative;
+}
+
+/* Asymmetric Artistic Layout: Hero frame + Staggered Trio */
+.collage-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 1.1rem;
+  width: 100%;
+}
+
+.collage-item-hero {
+  grid-row: 1 / span 2;
+  height: 380px;
+}
+
+.collage-item-top {
+  height: 182px;
+}
+
+.collage-item-bottom {
+  height: 182px;
+}
+
+.collage-item-wide {
+  grid-column: 1 / span 2;
+  height: 190px;
+  margin-top: 0.3rem;
+}
+
+/* Floating Ambient Aura behind Collage */
+.collage-ambient-glow {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 85%;
+  height: 70%;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.18) 0%, rgba(229, 193, 88, 0.1) 50%, transparent 75%);
+  filter: blur(35px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Story Cards for Page 5 */
+.story-archive {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.story-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 3px solid var(--purple-accent);
+  border-radius: var(--radius-lg);
+  padding: 2rem 1.8rem;
+  box-shadow: var(--shadow-dark-md);
+  position: relative;
+  transition: transform 0.35s ease, border-color 0.35s ease;
+}
+
+.story-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(168, 85, 247, 0.45);
+  box-shadow: var(--shadow-dark-lg), 0 0 25px rgba(168, 85, 247, 0.15);
+}
+
+.story-card.featured {
+  border-left-color: var(--gold-primary);
+  background: linear-gradient(145deg, rgba(28, 24, 38, 0.85) 0%, rgba(18, 16, 26, 0.85) 100%);
+  box-shadow: var(--shadow-dark-md), 0 0 20px rgba(229, 193, 88, 0.1);
+}
+
+/* ===================================================
+   PAGE 6: FINAL LETTER, DARK MUSIC PLAYER, FINALE
+   =================================================== */
+
+/* Dark Glassmorphic Music Player */
+.music-player-bar {
+  width: 100%;
+  background: rgba(18, 16, 26, 0.85);
+  border: 1.5px solid rgba(229, 193, 88, 0.35);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--radius-full);
+  padding: 0.85rem 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow-dark-md), 0 0 25px rgba(229, 193, 88, 0.15);
+  margin-bottom: 2.2rem;
+}
+
+.music-info {
+  display: flex;
+  align-items: center;
+  gap: 0.95rem;
+}
+
+.vinyl-disc {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #252030 25%, #0d0c14 65%, #e5c158 100%);
+  border: 2px solid rgba(229, 193, 88, 0.7);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+}
+
+.vinyl-disc.spinning {
+  animation: spinVinyl 4s linear infinite;
+}
+
+@keyframes spinVinyl {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.vinyl-center {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #110f18;
+  border: 1.5px solid var(--gold-primary);
+}
+
+.track-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.track-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.25;
+}
+
+.track-sub {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.music-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.btn-play-pause {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: var(--gold-gradient);
+  color: #110d05;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(229, 193, 88, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-play-pause:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 22px rgba(229, 193, 88, 0.6);
+}
+
+/* Audio Wave Bars */
+.audio-waves {
+  display: flex;
+  gap: 3px;
+  align-items: flex-end;
+  height: 20px;
+  margin-right: 0.45rem;
+}
+
+.wave-bar {
+  width: 3px;
+  height: 6px;
+  background: var(--gold-primary);
+  border-radius: 2px;
+  transition: height 0.2s ease;
+  box-shadow: 0 0 6px rgba(229, 193, 88, 0.5);
+}
+
+.audio-waves.playing .wave-bar:nth-child(1) { animation: waveBounce 0.8s infinite alternate ease-in-out; }
+.audio-waves.playing .wave-bar:nth-child(2) { animation: waveBounce 0.5s infinite alternate ease-in-out 0.2s; }
+.audio-waves.playing .wave-bar:nth-child(3) { animation: waveBounce 0.9s infinite alternate ease-in-out 0.4s; }
+.audio-waves.playing .wave-bar:nth-child(4) { animation: waveBounce 0.6s infinite alternate ease-in-out 0.1s; }
+
+@keyframes waveBounce {
+  0% { height: 4px; }
+  100% { height: 20px; }
+}
+
+/* Page 6 Photo Trio */
+.page6-photos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.95rem;
+  width: 100%;
+  margin-bottom: 2.2rem;
+}
+
+.page6-photos .photo-frame {
+  height: 175px;
+}
+
+/* Final Letter Cards */
+.finale-archive {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.finale-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  padding: 2.2rem 1.9rem;
+  box-shadow: var(--shadow-dark-md);
+  position: relative;
+}
+
+.finale-card.special-gift-card {
+  background: linear-gradient(145deg, rgba(28, 22, 40, 0.9) 0%, rgba(18, 15, 26, 0.9) 100%);
+  border: 1.5px solid rgba(229, 193, 88, 0.4);
+  box-shadow: var(--shadow-dark-lg), 0 0 30px rgba(229, 193, 88, 0.15);
+}
+
+/* ===================================================
+   FINAL SECTION: FINAL TOUCH (DARK LUXURY)
+   =================================================== */
+
+.final-section-card {
+  text-align: center;
+  padding: 3.2rem 2rem;
+  margin-top: 2.4rem;
+  background: radial-gradient(circle at 50% 30%, #1e192c 0%, #120f1c 65%, #0a0910 100%);
+  border: 1.5px solid rgba(229, 193, 88, 0.45);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-dark-lg), 0 0 45px rgba(229, 193, 88, 0.25), 0 0 35px rgba(168, 85, 247, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.final-section-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(229, 193, 88, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.made-with-love-text {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.5rem, 5.2vw, 2.2rem);
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 20px rgba(229, 193, 88, 0.5);
+}
+
+.made-with-love-sub {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  margin-bottom: 2.4rem;
+}
+
+.btn-final-touch {
+  padding: 1.2rem 3rem;
+  font-size: 1.2rem;
+  letter-spacing: 0.04em;
+  animation: finalButtonPulse 2.5s infinite alternate ease-in-out;
+}
+
+@keyframes finalButtonPulse {
+  0% {
+    box-shadow: 0 10px 28px rgba(229, 193, 88, 0.35), 0 0 20px rgba(229, 193, 88, 0.25);
+  }
+  100% {
+    box-shadow: 0 16px 36px rgba(229, 193, 88, 0.55), 0 0 35px rgba(250, 229, 167, 0.6), 0 0 25px rgba(168, 85, 247, 0.4);
+  }
+}
+
+/* ===================================================
+   ANIMATION & UTILITY CLASSES
+   =================================================== */
+
+.fade-in-up {
+  animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scroll reveal for letter cards */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Confetti particle container */
+.confetti-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 99;
+}
+
+/* ===================================================
+   RESPONSIVE DESIGN (MOBILE FOCUS)
+   =================================================== */
+
+@media (max-width: 480px) {
+  .app-container {
+    padding: 4.8rem 1rem 3.5rem 1rem;
+  }
+
+  .luxury-card, .letter-card, .story-card, .finale-card {
+    padding: 1.85rem 1.35rem;
+    border-radius: var(--radius-md);
+  }
+
+  .polaroid-deck {
+    height: 400px;
+  }
+
+  .polaroid-card {
+    height: 380px;
+    padding: 12px 12px 42px 12px;
+  }
+
+  .polaroid-image-wrapper {
+    height: 280px;
+  }
+
+  .page3-photos .photo-frame {
+    height: 185px;
+  }
+
+  /* Asymmetric collage mobile adjustments */
+  .collage-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem;
+  }
+
+  .collage-item-hero {
+    grid-column: 1 / span 2;
+    grid-row: auto;
+    height: 240px;
+  }
+
+  .collage-item-top, .collage-item-bottom {
+    height: 155px;
+  }
+
+  .collage-item-wide {
+    height: 165px;
+  }
+
+  .page6-photos .photo-frame {
+    height: 135px;
+  }
+
+  .btn-luxury {
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
+@media (min-width: 768px) {
+  .app-container {
+    max-width: 680px;
+    padding-top: 6.2rem;
+  }
+
+  .cake-scene {
+    max-width: 440px;
+    height: 420px;
+  }
+}
