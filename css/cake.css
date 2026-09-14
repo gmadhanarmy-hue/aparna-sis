@@ -508,7 +508,7 @@
   }
 }
 
-/* Background Reveal Message: "Happy birthday akkoww" */
+/* Background Reveal Message: "Happiest birthday akkoww😍" */
 .akkoww-bg-reveal {
   position: absolute;
   top: -15px;
@@ -523,16 +523,16 @@
   color: #ffffff;
   opacity: 0;
   pointer-events: none;
-  z-index: 5;
+  z-index: 2;
   transition: opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
   text-shadow: 
-    0 0 25px rgba(229, 193, 88, 0.8),
-    0 0 45px rgba(168, 85, 247, 0.4),
+    0 0 25px rgba(229, 193, 88, 0.75),
+    0 0 45px rgba(168, 85, 247, 0.35),
     0 2px 8px rgba(0, 0, 0, 0.9);
 }
 
 .akkoww-bg-reveal.visible {
-  opacity: 1;
+  opacity: 0.95;
   transform: translateX(-50%) translateY(0);
 }
 

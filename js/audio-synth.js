@@ -349,6 +349,17 @@ class BirthdayAudioManager {
     osc.start(now);
     osc.stop(now + duration + 0.6);
   }
+
+  stopAllAudio() {
+    this.stopBgm();
+    this.stopCakeBgm();
+    this.stopFireworks();
+    if (this.audioCtx && this.audioCtx.state === 'running') {
+      try {
+        this.audioCtx.suspend();
+      } catch (e) {}
+    }
+  }
 }
 
 // Global instance

@@ -39,7 +39,7 @@ const COLOR_MAP = {
   orange: { hex: '#fb923c', light: '#ffedd5', rgb: '251, 146, 60' },
   peach: { hex: '#fba07a', light: '#fff1eb', rgb: '251, 160, 122' },
   coral: { hex: '#fb7185', light: '#ffe4e6', rgb: '251, 113, 133' },
-  white: { hex: '#f8fafc', light: '#ffffff', rgb: '248, 250, 252' },
+  white: { hex: '#ffffff', light: '#ffffff', rgb: '255, 255, 255' },
   black: { hex: '#94a3b8', light: '#f1f5f9', rgb: '148, 163, 184' },
   violet: { hex: '#8b5cf6', light: '#ede9fe', rgb: '139, 92, 246' },
   maroon: { hex: '#be123c', light: '#ffe4e6', rgb: '190, 18, 60' },
@@ -230,6 +230,8 @@ function spawnBalloons(colorHex, count = 18) {
   const container = document.getElementById('balloon-container');
   if (!container) return;
 
+  const isWhite = colorHex.toLowerCase() === '#ffffff' || colorHex.toLowerCase() === '#f8fafc';
+
   for (let i = 0; i < count; i++) {
     const delay = i * 260;
     setTimeout(() => {
@@ -243,7 +245,13 @@ function spawnBalloons(colorHex, count = 18) {
       balloon.style.left = `${leftPercent}%`;
       balloon.style.transform = `scale(${sizeScale})`;
       balloon.style.animationDuration = `${duration}s`;
-      balloon.style.background = `radial-gradient(circle at 35% 30%, #ffffff 0%, ${colorHex} 52%, rgba(0,0,0,0.5) 100%)`;
+
+      if (isWhite) {
+        balloon.style.background = `radial-gradient(circle at 35% 30%, #ffffff 0%, #f4f7fb 42%, #d8e2ec 78%, rgba(160, 175, 195, 0.6) 100%)`;
+        balloon.style.boxShadow = `inset -3px -3px 8px rgba(0,0,0,0.2), 0 8px 25px rgba(255,255,255,0.4), 0 0 15px rgba(229,193,88,0.25)`;
+      } else {
+        balloon.style.background = `radial-gradient(circle at 35% 30%, #ffffff 0%, ${colorHex} 52%, rgba(0,0,0,0.5) 100%)`;
+      }
 
       const string = document.createElement('div');
       string.className = 'balloon-string';
@@ -514,7 +522,7 @@ function initCakeCutting() {
 
   let cakeStep = 1;
 
-  // CLICK 1: CANDLE OFF + DIWALI AERIAL FIREWORKS + CAKE-BGM STARTS
+  // CLICK 1: CANDLE OFF + DIWALI AERIAL FIREWORKS + CAKE-BGM STARTS + "Happiest birthday akkoww😍"
   if (btnStep1) {
     btnStep1.addEventListener('click', () => {
       if (cakeStep !== 1) return;
@@ -537,7 +545,12 @@ function initCakeCutting() {
         window.birthdayAudio.startCakeBgm();
       }
 
-      // 5. Hide Step 1 button, reveal Step 2 button ("Cut the Cake 🔪")
+      // 5. Immediately show background text: "Happiest birthday akkoww😍"
+      if (akkowwMsg) {
+        akkowwMsg.classList.add('visible');
+      }
+
+      // 6. Hide Step 1 button, reveal Step 2 button ("Cut the Cake 🔪")
       // Cake is NOT cut yet. Knife does NOT move yet. Next button is NOT shown.
       btnStep1.style.display = 'none';
       if (btnStep2) {
@@ -609,12 +622,7 @@ function initCakeCutting() {
       // 4. Celebration confetti burst
       fireConfetti();
 
-      // 5. Background text appears: "Happy birthday akkoww"
-      if (akkowwMsg) {
-        akkowwMsg.classList.add('visible');
-      }
-
-      // 6. ONLY NOW reveal the final Next button ("Next ✨")
+      // 5. ONLY NOW reveal the final Next button ("Next ✨")
       setTimeout(() => {
         if (btnNext) {
           btnNext.style.display = 'inline-flex';
@@ -698,6 +706,17 @@ function initFinalTouch() {
   if (!btnFinal) return;
 
   btnFinal.addEventListener('click', () => {
+    // 1. Immediately stop/pause ALL website background music BEFORE opening Microsoft Form
+    if (window.birthdayAudio) {
+      window.birthdayAudio.stopAllAudio();
+    }
+    document.querySelectorAll('audio').forEach(a => {
+      try {
+        a.pause();
+        a.currentTime = 0;
+      } catch (e) {}
+    });
+
     // Confetti burst
     fireConfetti();
 
